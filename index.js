@@ -61,6 +61,17 @@ async function run() {
     const result = await todosCollection.deleteOne({ _id: ObjectId(id) });
     res.send(result);
   });
+    
+    app.put("/todos/:id", async (req, res) => { 
+        const id = req.params.id;
+        const todo = req.body;
+        const result = await todosCollection.updateOne({ _id: ObjectId(id) }, { $set: todo });
+        res.send(result);
+      });
+  
+    
+  
+
 
     
 
